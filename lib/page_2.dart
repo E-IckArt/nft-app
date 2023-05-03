@@ -11,10 +11,11 @@ class Page2 extends StatelessWidget {
       Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
           child: SizedBox(
-            height: 300,
+            height: 100,
             width: double.maxFinite,
-            child: const CircleAvatar(
-                backgroundImage: AssetImage('assets/images/bitcoin-icon.jpg')),
+            child: CircleAvatar(
+              backgroundImage: AssetImage('assets/images/bitcoin-icon.png'),
+            ),
           ))
     ]);
   }
