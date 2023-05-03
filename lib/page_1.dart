@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nft_app/page_2.dart';
 
 class Page1 extends StatelessWidget {
   const Page1({
@@ -49,7 +50,14 @@ class Page1 extends StatelessWidget {
                           color: Color(0xFF65635E)))),
               const Spacer(),
               MaterialButton(
-                onPressed: () => print("hello"),
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (_, __, ___) => Page2()
+                    )
+                  )
+                },
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(35))),
                 textColor: Colors.white,
