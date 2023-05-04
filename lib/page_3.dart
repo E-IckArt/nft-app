@@ -7,49 +7,70 @@ class Page3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final display = MediaQuery.of(context);
+
     return Column(mainAxisSize: MainAxisSize.max, children: [
-      Container(
-          width: double.maxFinite,
-          decoration: BoxDecoration(
-              color: Colors.tealAccent[200],
-              image: const DecorationImage(
-                image: AssetImage('assets/images/background.jpg'),
-                fit: BoxFit.cover,
-              ),
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(0),
-                topRight: Radius.circular(0),
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30),
-              )),
-          child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
-              child: Column(children: [
-                SizedBox(
-                  height: 150,
-                  width: 300,
+      Stack(
+        clipBehavior: Clip.none,
+        children: <Widget>[
+          Container(
+              width: double.maxFinite,
+              height: 260,
+              decoration: BoxDecoration(
+                  image: const DecorationImage(
+                    image: AssetImage('assets/images/background.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(0),
+                    topRight: Radius.circular(0),
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30),
+                  )),
+              child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 55),
                   child: Column(children: [
-                    Text("Inscrivez-vous maintenant",
-                        maxLines: 2,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 28,
-                            fontWeight: FontWeight.w900)),
-                    SizedBox(height: 18),
-                    Text(
-                        "On vous offre un NFT à l’inscription ! Il vaudra très certainement 10 fois son prix dans quelques années",
-                        maxLines: 3,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400)),
-                  ]),
-                ),
-              ]))),
+                    SizedBox(
+                      height: 150,
+                      width: 300,
+                      child: Column(children: const [
+                        Text("Inscrivez-vous maintenant",
+                            maxLines: 2,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 28,
+                                fontWeight: FontWeight.w900)),
+                        SizedBox(height: 18),
+                        Text(
+                            "On vous offre un NFT à l’inscription ! Il vaudra très certainement 10 fois son prix dans quelques années",
+                            maxLines: 3,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400)),
+                      ]),
+                    ),
+                  ]))),
+          Positioned(
+            bottom: -25,
+            right: 25,
+            child: Container(
+                width: 50.0,
+                height: 50.0,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/gift.jpg'),
+                      fit: BoxFit.contain,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(50)))),
+          ),
+        ],
+      ),
       Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 35),
           child: Column(children: [
             Form(
                 child: Column(
@@ -58,6 +79,12 @@ class Page3 extends StatelessWidget {
                 TextFormField(
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.tealAccent,
+                      ),
+                    ),
+                    labelText: "Identifiant",
                     hintText: "Entrez votre identifiant",
                   ),
                   validator: (String? value) {
@@ -67,12 +94,18 @@ class Page3 extends StatelessWidget {
                     return null;
                   },
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 TextFormField(
                   obscureText: true,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: "Mot de passe",
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.tealAccent,
+                      ),
+                    ),
+                    labelText: "Mot de passe",
+                    hintText: "Entrez votre mot de passe",
                   ),
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
